@@ -1,0 +1,35 @@
+.content-conatainer {
+  margin: 0 auto;
+  padding: 0 $m-size;
+  max-width: 80rem;
+}
+
+.content-conatainer1 {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 15px $m-size;
+  max-width: 80rem;
+
+  @media (min-width: $desktop-breakpoint) {
+    margin: 0 auto;
+    max-width: 80rem;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+
+  }
+}
+
+.content-conatainer_component {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 0 $m-size;
+  max-width: 40rem;
+      width: 60rem;
+
+  @media (min-width: $desktop-breakpoint) {
+    left: 4%;
+    clear:both;
+    padding: 0 $m-size;
+  }
+}
