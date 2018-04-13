@@ -26,10 +26,32 @@
   padding: 0 $m-size;
   max-width: 40rem;
       width: 60rem;
-
+font-family: 'Varela Round', Arial, sans-serif;
   @media (min-width: $desktop-breakpoint) {
     left: 4%;
     clear:both;
     padding: 0 $m-size;
+  }
+}
+
+.content-conatainer_button-survey {
+
+margin-left: -15px;
+  max-width: 40rem;
+      width: 60rem;
+font-family: 'Varela Round', Arial, sans-serif;
+  @media (min-width: $desktop-breakpoint) {
+  margin-left: -15px;
+  }
+}
+
+.content-conatainer_button {
+  max-width: 40rem;
+      width: 60rem;
+font-family: 'Varela Round', Arial, sans-serif;
+padding: 0 $m-size;
+  @media (min-width: $desktop-breakpoint) {
+    padding: 0 $m-size;
+
   }
 }

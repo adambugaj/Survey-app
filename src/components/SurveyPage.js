@@ -18,6 +18,7 @@ class SurveyPage extends React.Component {
     completed: 50
   };
 
+  // Przycisk cofajacy ankiete plus konieczne warunki
   onBack = () => {
       const {surveyNumber} = this.state;
       console.log(this.props.survey)
@@ -31,6 +32,7 @@ class SurveyPage extends React.Component {
         }
   }
 
+  // Przycisk next
   onNext = () => {
       const {surveyNumber, procentNumber, procentUpdate} = this.state;
       console.log(this.props)
@@ -56,11 +58,11 @@ class SurveyPage extends React.Component {
   render() {
     const {surveyNumber} = this.state;
   return (
-    <div>
+    <div >
       <SurveyForm  key={Math.random()}{...this.props.survey} />
       <MuiThemeProvider>
       <Card className="content-conatainer_component">
-        <CardHeader title={`You have already finished ${this.state.procentUpdate <= 100 ? Math.floor(this.state.procentUpdate) : 100} %`} />
+        <CardHeader className="content-conatainer_component" title={`You have already finished ${this.state.procentUpdate <= 100 ? Math.floor(this.state.procentUpdate) : 100} %`} />
         <CardActions>
           <FlatButton
             type="button"
@@ -80,7 +82,9 @@ class SurveyPage extends React.Component {
           <LinearProgress mode="determinate" value={this.state.procentUpdate} />
         </Card>
       </MuiThemeProvider>
-      <ButtonAddSurvey />
+      <div className="content-conatainer_component">
+        <ButtonAddSurvey />
+      </div>
     </div>
   );
 };

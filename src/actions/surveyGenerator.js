@@ -1,3 +1,4 @@
+// Dodaj nową ankiete do obiektu - pytanie i odpowiedzi
 const addSurvey = ({
   surveyID = '',
   question = '',
@@ -16,24 +17,22 @@ const addSurvey = ({
   }
 });
 
-const removeUser = ({ userID } = {}) => ({
-  type: 'REMOVE_USER',
-  userID
-});
-
-const editUser = (userID, updates) => {
+// Usuwanie wybranej ankiety
+const removeSurvey = ({ surveyID } = {}) => {
   return {
-    type: 'EDIT_USER',
-    userID,
+    type: 'REMOVE_SURVEY',
+    surveyID
+  };
+};
+
+// Edycja kliknietej ankiety
+const editSurvey = (surveyID, updates) => {
+  console.log(surveyID, updates)
+  return {
+    type: 'EDIT_SURVEY',
+    surveyID,
     updates
-  }
+  };
 };
 
-const filterTransaction = (transactionSum) => {
-  return {
-    type: 'FILTER_TRANSACTION',
-    transactionSum
-  }
-};
-
-export { addSurvey, removeUser, editUser };
+export { addSurvey, removeSurvey, editSurvey };

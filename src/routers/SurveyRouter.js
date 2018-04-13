@@ -14,10 +14,9 @@ const SurveyRouter = () => {
       <div>
         <Header />
         <Switch>
-          <Route path="/" component={ButtonAddSurvey} exact={true} />
+          <Route path="/" component={SurveyPage} exact={true} />
           <Route path="/survey/:id" component={SurveyPage} />
           <Route path="/edit-survey/:id/" component={EditSurvey} />
-          <Route path="/sur" component={EditSurvey} />
           <Route path="/add-survey" component={AcceptSurvey} />
         </Switch>
       </div>

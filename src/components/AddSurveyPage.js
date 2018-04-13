@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addSurvey } from '../actions/surveyGenerator';
-// Material design components
+// Komponenty Material Design
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
 import { Card, CardHeader, CardActions } from 'material-ui/Card';
@@ -14,23 +14,33 @@ class AddSurvey extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      surveyID: `${Math.floor(Math.random() * 100)}-${Math.floor(Math.random() * 100)}`,
+      surveyID: props.survey ? props.survey.surveyID : `${Math.floor(Math.random() * 100)}-${Math.floor(Math.random() * 100)}`,
       question: props.survey ? props.survey.question : '',
       answer1: props.survey ? props.survey.answer1 : '',
-      answer2: '',
-      answer3: ''
+      answer2: props.survey ? props.survey.answer2 : '',
+      answer3: props.survey ? props.survey.answer3 : ''
     }
   }
 
-// Add Username to the object state
+// Dodaje pytanie do obiektu
   onQuestion = (e) => {
     const name = e.target.value;
       this.setState(() => ({ question: name }));
   };
-
+// Dodaje odpowiedz do obiektu
   onAnswer1 = (e) => {
     const name = e.target.value;
       this.setState(() => ({ answer1: name }));
+  };
+
+  onAnswer2 = (e) => {
+    const name = e.target.value;
+      this.setState(() => ({ answer2: name }));
+  };
+
+  onAnswer3 = (e) => {
+    const name = e.target.value;
+      this.setState(() => ({ answer3: name }));
   };
 
 // Po zatwierdzeniu przyciskiem submit wysyłamy dane do obiektu
@@ -82,9 +92,9 @@ class AddSurvey extends React.Component {
                 className="input-group__item"
             />
             <CardActions>
-              <FlatButton onSubmit={this.onSubmit} type="submit" label="Submit" />
+              <FlatButton onSubmit={this.onSubmit} primary={true} type="submit" label="Submit" />
               <Link to="/">
-                <FlatButton type="button" label="Cancel" secondary={true}   />
+                <FlatButton type="button" label="Cancel" default={true}   />
               </Link>
             </CardActions>
           </Card>
@@ -95,13 +105,4 @@ class AddSurvey extends React.Component {
   }
 };
 
-// React components doesn't need to have connect
-// const mapStateToProps = (state) => {
-//   console.log(state)
-//   return {
-//     survey: state.survey.sort((a,b) => {
-//       return b.surveyNumber - a.surveyNumber;
-//     })
-//   };
-// };
 export default AddSurvey;

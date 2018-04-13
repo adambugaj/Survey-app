@@ -6,12 +6,12 @@ import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 
-// Zwykły header w aplikacji
+// Format ankiety 3x radio buttons + edit button
 export const SurveyForm = (props) => {
   console.log(props);
   return (
     <MuiThemeProvider>
-      <div className="content-conatainer1">
+      <div>
         <Card className="content-conatainer_component">
           <CardHeader
             title={props.question}
@@ -24,12 +24,12 @@ export const SurveyForm = (props) => {
            />
            <RadioButton
              className="input-group__radio"
-             value="light"
+             value="not_light1"
              label={props.answer2}
            />
            <RadioButton
              className="input-group__radio"
-             value="not_light1"
+             value="not_light2"
              label={props.answer3}
            />
            </RadioButtonGroup>
