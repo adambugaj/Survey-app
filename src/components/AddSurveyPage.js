@@ -15,7 +15,6 @@ class AddSurvey extends React.Component {
     super(props);
     this.state = {
       surveyID: `${Math.floor(Math.random() * 100)}-${Math.floor(Math.random() * 100)}`,
-      surveyNumber: 0,
       question: props.survey ? props.survey.question : '',
       answer1: props.survey ? props.survey.answer1 : '',
       answer2: '',
@@ -39,7 +38,6 @@ class AddSurvey extends React.Component {
       e.preventDefault();
       this.props.onSubmit({
         surveyID: this.state.surveyID,
-        surveyNumber: this.state.surveyNumber,
         question: this.state.question,
         answer1: this.state.answer1,
         answer2: this.state.answer2,
@@ -54,9 +52,6 @@ class AddSurvey extends React.Component {
         <form onSubmit={this.onSubmit}>
         <MuiThemeProvider>
           <Card>
-            <CardHeader
-              title={`Create a Survey ID: ${this.state.surveyID}`}
-            />
             <TextField
               floatingLabelText="Question"
               className="input-group"
@@ -109,4 +104,4 @@ class AddSurvey extends React.Component {
 //     })
 //   };
 // };
-export default connect()(AddSurvey);
+export default AddSurvey;

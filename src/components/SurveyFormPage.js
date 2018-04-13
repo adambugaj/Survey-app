@@ -34,6 +34,12 @@ export const SurveyForm = (props) => {
            />
            </RadioButtonGroup>
           <CardActions>
+            <Link to={`/edit-survey/${props.surveyID}`} >
+              <FlatButton
+                label="Edit"
+                backgroundColor="#F5F5F5"
+                default={true} />
+            </Link>
           </CardActions>
         </Card>
 

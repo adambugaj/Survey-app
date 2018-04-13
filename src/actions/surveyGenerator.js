@@ -1,6 +1,5 @@
 const addSurvey = ({
   surveyID = '',
-  surveyNumber = 0,
   question = '',
   answer1 = '',
   answer2 = '',
@@ -10,7 +9,6 @@ const addSurvey = ({
   type: "ADD_SURVEY",
   survey: {
     surveyID,
-    surveyNumber,
     question,
     answer1,
     answer2,

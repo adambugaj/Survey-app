@@ -7,14 +7,15 @@ import { Card, CardHeader, CardActions } from 'material-ui/Card';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import FlatButton from 'material-ui/FlatButton';
 import ButtonAddSurvey from './ButtonAddSurvey';
-import ProgressLine from './ProgressLine';
+import LinearProgress from 'material-ui/LinearProgress';
 
-
-// Zwykły header w aplikacji
 class SurveyPage extends React.Component {
 
   state = {
     surveyNumber: 0,
+    procentNumber: 100 / this.props.surveyNext.length,
+    procentUpdate: 100 / this.props.surveyNext.length,
+    completed: 50
   };
 
   onBack = () => {
@@ -31,21 +32,24 @@ class SurveyPage extends React.Component {
   }
 
   onNext = () => {
-      const {surveyNumber} = this.state;
-      console.log(surveyNumber)
+      const {surveyNumber, procentNumber, procentUpdate} = this.state;
+      console.log(this.props)
 
+      // Pasek progresu ankiety - dane w zależności od klikniecia przycisku next
+      if (procentUpdate <= 100){
+        this.setState({procentUpdate: procentNumber + procentUpdate});
+      }
+
+      // Warunki dla przycisku next:
       if ((this.props.surveyNext.length - 1) === surveyNumber) {
         this.setState({surveyNumber: surveyNumber});
         this.props.history.push(`/survey/${this.props.surveyNext[surveyNumber].surveyID}`);
-        console.log(1)
       } else if (surveyNumber === -1) {
         this.setState({surveyNumber: 1});
         this.props.history.push(`/survey/${this.props.surveyNext[0].surveyID}`);
-        console.log(2)
       } else {
       this.setState({surveyNumber: this.state.surveyNumber + 1});
       this.props.history.push(`/survey/${this.props.surveyNext[surveyNumber].surveyID}`);
-      console.log(3)
     }
   }
 
@@ -56,6 +60,7 @@ class SurveyPage extends React.Component {
       <SurveyForm  key={Math.random()}{...this.props.survey} />
       <MuiThemeProvider>
       <Card className="content-conatainer_component">
+        <CardHeader title={`You have already finished ${this.state.procentUpdate <= 100 ? Math.floor(this.state.procentUpdate) : 100} %`} />
         <CardActions>
           <FlatButton
             type="button"
@@ -72,6 +77,7 @@ class SurveyPage extends React.Component {
             className="box-layout__button1"
             backgroundColor="#F5F5F5"/>
           </CardActions>
+          <LinearProgress mode="determinate" value={this.state.procentUpdate} />
         </Card>
       </MuiThemeProvider>
       <ButtonAddSurvey />

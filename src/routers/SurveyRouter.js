@@ -3,6 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import { Header } from '.././components/Header';
 import SurveyPage from '.././components/SurveyPage';
 import AcceptSurvey from '.././components/AcceptSurveyPage';
+import EditSurvey from '.././components/EditSurveyPage';
 import ButtonAddSurvey from '.././components/ButtonAddSurvey';
 import createHistory from 'history/createBrowserHistory';
 
@@ -15,6 +16,8 @@ const SurveyRouter = () => {
         <Switch>
           <Route path="/" component={ButtonAddSurvey} exact={true} />
           <Route path="/survey/:id" component={SurveyPage} />
+          <Route path="/edit-survey/:id/" component={EditSurvey} />
+          <Route path="/sur" component={EditSurvey} />
           <Route path="/add-survey" component={AcceptSurvey} />
         </Switch>
       </div>
